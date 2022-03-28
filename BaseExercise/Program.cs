@@ -25,9 +25,9 @@ namespace BaseExercise
             string text = File.ReadAllText(path);
 
 
-            Dictionary<string, WordInText> dictionary = TextParsing.FormDictionary(text);
+            Dictionary<string, WordInfo> dictionary = TextParser.FormDictionary(text);
 
-            ShowingInformation.ShowStatistic(dictionary);
+            ConsoleViewer.ShowStatistic(dictionary);
 
 
             var enteredWord = String.Empty;
@@ -40,7 +40,7 @@ namespace BaseExercise
 
             } while (String.IsNullOrEmpty(enteredWord) || !dictionary.ContainsKey(enteredWord.Trim()));
 
-            ShowingInformation.ShowWordFullInformation(dictionary[enteredWord]);
+            ConsoleViewer.ShowWordFullInformation(dictionary[enteredWord]);
         }
     }
 }

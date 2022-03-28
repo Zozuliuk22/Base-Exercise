@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace BaseExercise
 {
-    internal static class TextParsing
+    internal static class TextParser
     {
         /// <summary>
         /// Form a dictionary from the text in the WordInText object format: for every word added its value and positions in the text.
         /// </summary>
         /// <param name="text">The text value.</param>
         /// <returns>The formed word dictionary that is based on the text.</returns>
-        internal static Dictionary<string, WordInText> FormDictionary(string text)
+        internal static Dictionary<string, WordInfo> FormDictionary(string text)
         {
-            var dictionary = new Dictionary<string, WordInText>();
+            var dictionary = new Dictionary<string, WordInfo>();
 
             text = ClearSpecialSymbols(text);
             string[] lines = text.Split('\n');
@@ -25,7 +25,7 @@ namespace BaseExercise
                 {
                     if (!dictionary.ContainsKey(words[j]) && !String.IsNullOrEmpty(words[j]))
                     {
-                        dictionary.Add(words[j], new WordInText(word: words[j], position: (i, j)));
+                        dictionary.Add(words[j], new WordInfo(word: words[j], position: (i, j)));
                     }
                     else
                     {

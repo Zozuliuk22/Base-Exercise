@@ -2,7 +2,7 @@
 
 namespace BaseExercise
 {
-    internal class WordInText
+    internal class WordInfo
     {
         private List<(int, int)> _positions;
 
@@ -12,7 +12,7 @@ namespace BaseExercise
 
         public List<(int, int)> Positions { get { return _positions; } }
 
-        public WordInText(string word, (int, int) position)
+        public WordInfo(string word, (int, int) position)
         {
             Word = word;
             _positions = new List<(int, int)>() { position };

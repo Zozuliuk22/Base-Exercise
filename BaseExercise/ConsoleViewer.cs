@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace BaseExercise
 {
-    internal static class ShowingInformation
+    internal static class ConsoleViewer
     {
         /// <summary>
         /// Show statistic of the dictionary in the format: a word and an amount of the word repeats in the text. 
         /// </summary>
         /// <param name="dictionary">The formed dictionary of words.</param>
-        internal static void ShowStatistic(Dictionary<string, WordInText> dictionary)
+        internal static void ShowStatistic(Dictionary<string, WordInfo> dictionary)
         {
             Console.WriteLine("\n\tDictionary statistic\n");
 
@@ -30,7 +30,7 @@ namespace BaseExercise
         /// Show such information about the word as an amount of the word repeats in the text and a list of positions in the text - an index of the line and an index of the word in the line. 
         /// </summary>
         /// <param name="word">The chosen word from the dictionary.</param>
-        internal static void ShowWordFullInformation(WordInText word)
+        internal static void ShowWordFullInformation(WordInfo word)
         {
             Console.WriteLine("Frequency is {0}", word.Frequency);
             Console.WriteLine("\n\tList of positions:\n");
