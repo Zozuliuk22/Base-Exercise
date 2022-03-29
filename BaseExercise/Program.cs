@@ -20,27 +20,42 @@ namespace BaseExercise
 
                 path = Console.ReadLine();
 
-            } while (String.IsNullOrEmpty(path) || !File.Exists(path.Trim()));
+            } while (String.IsNullOrWhiteSpace(path) || !File.Exists(path.Trim()));
 
-            string text = File.ReadAllText(path);
+            string text = String.Empty;
 
+            try
+            {
+                text = File.ReadAllText(path);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception message: {ex.Message}");
+            }
 
-            Dictionary<string, WordInfo> dictionary = TextParser.FormDictionary(text);
+            Dictionary<string, WordInfo>  dictionary = TextParser.FormDictionary(text);
 
             ConsoleViewer.ShowStatistic(dictionary);
 
 
-            var enteredWord = String.Empty;
-
-            do
+            if (dictionary.Count == 0)
             {
-                Console.Write("Enter the correct word to get detailing information about it: ");
+                Console.WriteLine("No word is in your dictionary.");
+            }
+            else
+            {
+                var enteredWord = String.Empty;
 
-                enteredWord = Console.ReadLine();
+                do
+                {
+                    Console.Write("Enter the correct word to get detailing information about it: ");
 
-            } while (String.IsNullOrEmpty(enteredWord) || !dictionary.ContainsKey(enteredWord.Trim()));
+                    enteredWord = Console.ReadLine();
 
-            ConsoleViewer.ShowWordFullInformation(dictionary[enteredWord]);
+                } while (String.IsNullOrWhiteSpace(enteredWord) || !dictionary.ContainsKey(enteredWord.Trim()));
+
+                ConsoleViewer.ShowWordFullInformation(dictionary[enteredWord]);
+            }                
         }
     }
 }

@@ -23,13 +23,12 @@ namespace BaseExercise
 
                 for (var j = 0; j < words.Length; j++)
                 {
-                    if (!dictionary.ContainsKey(words[j]) && !String.IsNullOrEmpty(words[j]))
+                    if (!String.IsNullOrWhiteSpace(words[j]))
                     {
-                        dictionary.Add(words[j], new WordInfo(word: words[j], position: (i, j)));
-                    }
-                    else
-                    {
-                        dictionary[words[j]].AddPosition((i, j));
+                        if(!dictionary.ContainsKey(words[j]))
+                            dictionary.Add(words[j], new WordInfo(word: words[j], position: (i, j)));
+                        else
+                            dictionary[words[j]].AddPosition((i, j));
                     }
                 }
             }

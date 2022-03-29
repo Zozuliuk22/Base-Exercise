@@ -12,18 +12,25 @@ namespace BaseExercise
         /// <param name="dictionary">The formed dictionary of words.</param>
         internal static void ShowStatistic(Dictionary<string, WordInfo> dictionary)
         {
-            Console.WriteLine("\n\tDictionary statistic\n");
-
-            Console.WriteLine(new string('-', 40));
-            Console.WriteLine(String.Format("{0, 14}", "Word") + String.Format("{0, 10}", "|") + String.Format("{0, 11}", "Amount"));
-            Console.WriteLine(new string('-', 40));
-
-            foreach (var word in dictionary.OrderByDescending(v => v.Value.Frequency))
+            if(dictionary.Count == 0)
             {
-                Console.WriteLine(String.Format("{0, 19}", word.Key) + String.Format("{0, 5}", "|") + String.Format("{0, 9}", word.Value.Frequency));
+                Console.WriteLine("The dictionary is empty.");
             }
+            else
+            {
+                Console.WriteLine("\n\tDictionary statistic\n");
 
-            Console.WriteLine();
+                Console.WriteLine(new string('-', 40));
+                Console.WriteLine(String.Format("{0, 14}", "Word") + String.Format("{0, 10}", "|") + String.Format("{0, 11}", "Amount"));
+                Console.WriteLine(new string('-', 40));
+
+                foreach (var word in dictionary.OrderByDescending(v => v.Value.Frequency))
+                {
+                    Console.WriteLine(String.Format("{0, 19}", word.Key) + String.Format("{0, 5}", "|") + String.Format("{0, 9}", word.Value.Frequency));
+                }
+
+                Console.WriteLine();
+            }            
         }
 
         /// <summary>
